@@ -25,7 +25,7 @@ async def custom_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # response using external API
 def handle_response(text: str) -> str:
-    api_url = f"https://api.nyx.my.id/ai/character-ai?prompt={text}&gaya=Nama%60kamu%60Nhiggha.%60Balas%60dengan%60tsundere"
+    api_url = f"https://api.nyx.my.id/ai/character-ai?prompt={text}&gaya=balas%60dengan%60tsundere"
     
     
     try:
