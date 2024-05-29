@@ -21,11 +21,11 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text('Ketik sesuatu jika ingin aku merespon\njika bot tidak membalas selama lebih dari 30 detik\ncoba ketik ulang')
 
 async def custom_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text('Aku bingung mau masukin apa di sini, haha')
+    await update.message.reply_text('GTW')
 
 # response using external API
 def handle_response(text: str) -> str:
-    api_url = f"https://api.nyx.my.id/ai/character-ai?prompt={text}&gaya=kamu adalah manusia. Nama asli kamu Nhiggha, mereka bisa emanggilmu sebagai Nhiggha-San. gaya bicara kamu adalah feminim tsundere sopan. gunakan bahasa non formal layaknya seperti manusia"
+    api_url = f"https://api.nyx.my.id/ai/character-ai?prompt={text}&gaya=Nama kamu Nhiggha. Balas dengan tsundere"
     
     
     try:
