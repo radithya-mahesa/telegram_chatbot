@@ -7,8 +7,11 @@ from keep_alive import keep_alive
 keep_alive()
 port = int(os.getenv('PORT', 8080))
 
-TOKEN: final = '7296526511:AAGhlXnAIbgq_eoYl7e7lLYIsPThcVDnymY'
-BOT_USERNAME: final = '@nhigga_bot'
+TOKEN: final = os.getenv('TOKEN')
+BOT_USERNAME: final = os.getenv('USERNAME')
+
+if TOKEN is None or BOT_USERNAME is None:
+    raise ValueError("Token atau username bot tidak ditemukan :(")
 
 # commands
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
