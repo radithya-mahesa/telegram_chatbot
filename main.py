@@ -15,10 +15,10 @@ if TOKEN is None or BOT_USERNAME is None:
 
 # commands
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text('Hola! selamat datang di Nhiggha Bot.\nkamu bisa ngobrol bebas selayaknya Character AI.\nBot diprogram oleh @RadithyaMS menggunakan bahasa Python.\nAPI dibuat oleh "NyxAltair"')
+    await update.message.reply_text('Hola! selamat datang di Bot Negro✨\nkamu bisa ngobrol bebas selayaknya Character AI🥳\nBot diprogram oleh @RadithyaMS menggunakan bahasa Python🐍\nsosok API dibuat oleh "NyxAltair"🔥\nMohon ketik "/help" terlebih dahulu sebelum mulai!')
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text('Ketik sesuatu jika ingin aku merespon\njika bot tidak membalas selama lebih dari 30 detik\ncoba ketik ulang')
+    await update.message.reply_text('Ketik apa saja jika ingin aku merespon\njika aku tidak membalas selama lebih dari 30 detik, coba ketik ulang🤕.\nTerkadang jika kamu mengetik isu sensitif seperti organisasi terror atau memuat isu rasis kemungkinan logic aku akan error🤯, dan jawaban yang diberikan bisa tidak sesuai(rusak)🥱.\nkadang tidak semua aku mengerti kosakata bahasa gaul😥, jadi kalo ngetik sebisa mungkin lebih jelas dan tidak terlalu panjang, oke😉')
 
 async def custom_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text('GTW')
