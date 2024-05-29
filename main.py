@@ -5,48 +5,79 @@ from telegram.ext import Application, CommandHandler, MessageHandler, filters, C
 import requests
 from keep_alive import keep_alive
 keep_alive()
+port = int(os.getenv('PORT', 8080))
 
-const telegramAuthToken =`6565732918:AAEnkmceNENQJ1AbcaArNfU1NxOrYO4b3_8`;
-const webhookEndpoint = "/endpoint";
-addEventListener ("fetch",event=>{
-  event.respondWith(handleIncomingRequest(event));
-});
+TOKEN: final = '7296526511:AAGhlXnAIbgq_eoYl7e7lLYIsPThcVDnymY'
+BOT_USERNAME: final = '@nhigga_bot'
 
-async function handleIncomingRequest(event) {
-  let url = new URL(event.request.url);
-  let path = url.pathname;
-  let method = event.request.method;
-  let workerUrl = `${url.protocol}//${url.host}`;
+# commands
+async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text('Hola! selamat datang di Nhiggha Bot.\nkamu bisa ngobrol bebas selayaknya Character AI.\nBot diprogram oleh @RadithyaMS menggunakan bahasa Python.\nAPI dibuat oleh "NyxAltair"')
 
-  if(method === "POST" && path === webhookEndpoint) {
-    const update = await event.request.json();
-    event.waitUntil(processUpdate(update));
-    return new Response("Ok");
-  } else if(method === "GET" && path === "/configure-webhook") {
-    const url = `https://api.telegram.org/bot${telegramAuthToken}/setWebhook?url=${workerUrl}${webhookEndpoint}`;
+async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text('Ketik sesuatu jika ingin aku merespon\njika bot tidak membalas selama lebih dari 30 detik\ncoba ketik ulang')
 
-    const response = await fetch(url);
+async def custom_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text('Aku bingung mau masukin apa di sini, haha')
 
-    if(response.ok) {
-      return new Response("Webhook set successfully",{status:200});
-    } else {
-      return new Response("Failed to set webhook",{status:response.status});
-    }
-  } else {
-    return new Response("Not found",{status:404});
-  }
+# response using external API
+def handle_response(text: str) -> str:
+    api_url = f"https://api.nyx.my.id/ai/character-ai?prompt={text}&gaya=kamu adalah manusia. Nama asli kamu Nhiggha, mereka bisa emanggilmu sebagai Nhiggha-San. gaya bicara kamu adalah feminim tsundere sopan. gunakan bahasa non formal layaknya seperti manusia"
+    
+    
+    try:
+        response = requests.get(api_url)
+        response.raise_for_status()  # memunculkan HTTPError status code bukan 200
+        print(f"API Response Status Code: {response.status_code}")
+        print(f"API Response Content: {response.content}")
 
-}
+        data = response.json()
+        print(f"API JSON Response: {data}")
+        
+        if data.get("status") == "true":
+            return data.get("result", "API tidak merespon")
+        else:
+            return "API mengembalikan false."
+    except requests.exceptions.RequestException as e:
+        print(f"Request failed: {e}")
+        return f"API Error!: {e}"
 
-async function processUpdate(update) {
-  if("message" in update) {
-    const chatId = update.message.chat.id;
-    const userText = update.message.text;
+async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    message_type: str = update.message.chat.type
+    text: str = update.message.text
 
-    const responseText =`You said: ${userText}`;
+    print(f'User ({update.message.chat.id}) in {message_type}: "{text}"')
 
-    const url = `https://api.telegram.org/bot${telegramAuthToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(responseText)}`;
+    if message_type == 'group':
+        if BOT_USERNAME in text:
+            new_text: str = text.replace(BOT_USERNAME, '').strip()
+            response: str = handle_response(new_text)
+        else:
+            return
+    else:
+        response: str = handle_response(text)
+    
+    print('Bot:', response)
+    await update.message.reply_text(response)
 
-    await fetch(url);
-  }
-}
+async def error(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    print(f'Update {update} caused error {context.error}')
+
+if __name__ == '__main__':
+    print('Starting bot...')
+    app = Application.builder().token(TOKEN).build()
+
+    # commands
+    app.add_handler(CommandHandler('start', start_command))
+    app.add_handler(CommandHandler('help', help_command))
+    app.add_handler(CommandHandler('custom', custom_command))
+
+    # messages
+    app.add_handler(MessageHandler(filters.TEXT, handle_message))
+
+    # errors
+    app.add_error_handler(error)
+
+    # polls the bot
+    print('polling...')
+    app.run_polling(poll_interval=3)
