@@ -1,3 +1,11 @@
+import os
+from typing import final
+from telegram import Update
+from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
+import requests
+from keep_alive import keep_alive
+keep_alive()
+
 const telegramAuthToken =`6565732918:AAEnkmceNENQJ1AbcaArNfU1NxOrYO4b3_8`;
 const webhookEndpoint = "/endpoint";
 addEventListener ("fetch",event=>{
