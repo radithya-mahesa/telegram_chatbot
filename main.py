@@ -7,6 +7,8 @@ from keep_alive import keep_alive
 keep_alive()
 port = int(os.getenv('PORT', 8080))
 
+# Token dan username di simpan ke dalam environment variable cloud server
+# bisa ganti os.getenv('') dengan token dan username bot kamu sendiri selama tidak diumbar ke publik
 TOKEN: final = os.getenv('TOKEN')
 BOT_USERNAME: final = os.getenv('USERNAME')
 
