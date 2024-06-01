@@ -1,5 +1,5 @@
 # chatbot_telegram
-just my telegram bot using python language
+just my telegram bot using python language, can give answer likes c.ai
 
 * Method 1 :
 Install python-telegram-bot, requests, and Flask.<br>cmd/terminal : <br>
