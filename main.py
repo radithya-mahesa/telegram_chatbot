@@ -44,10 +44,10 @@ def handle_response(text: str, state: str) -> str:
         api_url = f"https://api.nyx.my.id/ai/character-ai2?prompt={text}&gaya=balas%20sebagai%20pacar%20tsundere%20pemarah"
     else:
         api_url = f"https://api.nyx.my.id/ai/character-ai2?prompt={text}&gaya=balas%20sebagai%20pacar%20deredere%20cabul"
-        
+
     try:
         response = requests.get(api_url)
-        response.raise_for_status()  # Memunculkan HTTPError jika status code bukan 200
+        response.raise_for_status()  # memunculkan HTTPError status code bukan 200
         print(f"API Response Status Code: {response.status_code}")
         print(f"API Response Content: {response.content}")
 
@@ -60,12 +60,13 @@ def handle_response(text: str, state: str) -> str:
             return "API mengembalikan false."
     except requests.exceptions.HTTPError as e:
         status_code = e.response.status_code
-        error_message = f"Api Error!: {status_code} {e.response.reason}"
+        reason = e.response.reason
+        error_message = f"Api nya Capek Wak!: {status_code} {reason}"
         print(f"HTTPError occurred: {error_message}")
         return error_message
     except requests.exceptions.RequestException as e:
         print(f"Request failed: {e}")
-        return "Api Error!: Coba lagi nanti."
+        return "Api Error!: Coba lagi nanti"
 
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
