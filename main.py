@@ -27,8 +27,9 @@ async def about_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # external API
 def handle_response(text: str) -> str:
-    api_url = f"https://api.nyx.my.id/ai/character-ai?prompt={text}&gaya=balas%60dengan%60tsundere"
-    
+    api_url = f"https://api.nyx.my.id/ai/character-ai2?prompt={text}&gaya=balas%60sebagai%60pacar%60tsundere"
+    # prompt=your prompt
+    # gaya=this a bot logic
     
     try:
         response = requests.get(api_url)
