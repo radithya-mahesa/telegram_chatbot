@@ -16,4 +16,4 @@ use requirements.txt but, you must write the code here (look in my repository).<
   
 - Create your Telegram Bot in BotFather (can see the tutorial on youtube)
 
-API Credit : Kayla Nyx Altair / NyxAltair
+API Credit : Kayla Nyx Altair(Facebook)/ NyxAltair
