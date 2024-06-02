@@ -9,23 +9,23 @@ port = int(os.getenv('PORT', 8080))
 
 # Token dan username di simpan ke dalam environment variable cloud server
 # bisa ganti os.getenv('') dengan token dan username bot kamu sendiri selama tidak diumbar ke publik
-TOKEN: final = os.getenv('TOKEN')
-BOT_USERNAME: final = os.getenv('USERNAME')
+TOKEN: final = os.getenv('TOKEN') # = 'Your Token'
+BOT_USERNAME: final = os.getenv('USERNAME') # = 'Your Bot Username'
 
 if TOKEN is None or BOT_USERNAME is None:
     raise ValueError("Token atau username bot tidak ditemukan :(")
 
-# commands
+# /commands
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text('Hola! selamat datang di Bot Negro✨\nkamu bisa ngobrol bebas selayaknya Character AI🥳\nBot diprogram oleh @RadithyaMS menggunakan bahasa Python🐍\nsosok API dibuat oleh "NyxAltair"🔥\nMohon ketik "/help" terlebih dahulu sebelum mulai!')
+    await update.message.reply_text('Hola! selamat datang di Bot Telegramku✨\nkamu bisa ngobrol bebas selayaknya Character AI🥳\nMohon ketik "/help" terlebih dahulu sebelum mulai! ⚠')
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text('Ketik apa saja jika ingin aku merespon😏\n\nJika aku tidak membalas selama lebih dari 30 detik atau jawaban aku ngaco, coba ketik ulang🤕\n\nTerkadang jika kamu mengetik isu sensitif seperti organisasi terror atau memuat isu rasis kemungkinan logic aku akan error🤯, dan jawaban yang diberikan bisa tidak sesuai(rusak)🥱\n\nkadang tidak semua aku mengerti kosakata bahasa gaul😥, jadi kalo ngetik sebisa mungkin lebih jelas dan tidak terlalu panjang, oke😉')
+    await update.message.reply_text('Ketik apa saja jika ingin aku merespon😏\n\nJika aku tidak membalas selama lebih dari 30 detik atau jawaban aku ngaco, coba ketik ulang🤕\n\nTerkadang jika kamu mengetik isu sensitif seperti organisasi terror atau memuat isu rasis kemungkinan tidak merespon dan error🤯, dan jawaban yang diberikan bisa tidak sesuai(rusak)🥱\n\nKadang tidak semua aku mengerti kosakata bahasa gaul😥, jadi kalo ngetik sebisa mungkin lebih jelas dan mudah dimengerti, oke😉\n\nSatu lagi, melakukan perbincangan yang mengearah ke hal seksual dapat membuat GeminiAI menggantikan jawabanku menjadi default, maka dari itu kamu harus mencoba merangkai kata kata seunik mungkin agar terByPass oleh regulasi yang ditetapkan oleh Google, he he he...')
 
 async def about_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text('AI Model : Gemini\nCharacter Name : Alya Roshidere\nLanguage : Python\nCreated By : @RadithyaMS\nCredit API : NyxAltair')
+    await update.message.reply_text('AI Model : Gemini 🤖\nCharacter Name : Alya Roshidere 🌸\nLanguage : Python 🐍\nCreated By : @RadithyaMS 😏\nCredit API : NyxAltair 🔥')
 
-# response using external API
+# external API
 def handle_response(text: str) -> str:
     api_url = f"https://api.nyx.my.id/ai/character-ai?prompt={text}&gaya=balas%60dengan%60tsundere"
     
