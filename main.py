@@ -61,7 +61,7 @@ def handle_response(text: str, state: str) -> str:
     except requests.exceptions.HTTPError as e:
         status_code = e.response.status_code
         reason = e.response.reason
-        error_message = f"Api nya Capek Wak!: {status_code} {reason}"
+        error_message = f"Api nya Capek Wak! : Status_Code:{status_code} {reason}(I can't breathe~) coba lagi nanti"
         print(f"HTTPError occurred: {error_message}")
         return error_message
     except requests.exceptions.RequestException as e:
