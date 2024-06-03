@@ -1,3 +1,6 @@
+
+#  same but with different API
+
 import os
 import logging
 from typing import final
@@ -22,13 +25,16 @@ if TOKEN is None or BOT_USERNAME is None or WEBHOOK_URL is None:
 
 # /commands
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text('Hola! selamat datang di Bot Telegramku✨\nkamu bisa ngobrol bebas selayaknya Character AI🥳\nMohon ketik "/help" terlebih dahulu sebelum mulai! ⚠')
+    await update.message.reply_text('Hola! selamat datang di Bot Telegramku✨\nkamu bisa ngobrol bebas selayaknya Character AI🥳\nMohon ketik atau tekan "/help" dan /important terlebih dahulu sebelum mulai! ⚠')
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text('Ketik apa saja jika ingin aku merespon😏\n\nJika aku tidak membalas selama lebih dari 30 detik atau jawaban aku ngaco, coba ketik ulang🤕\n\nTerkadang jika kamu mengetik isu sensitif seperti organisasi terror atau memuat isu rasis kemungkinan tidak merespon dan error🤯, dan jawaban yang diberikan bisa tidak sesuai(rusak)🥱\n\nKadang tidak semua aku mengerti kosakata bahasa gaul😥, jadi kalo ngetik sebisa mungkin lebih jelas dan mudah dimengerti, oke😉\n\nSatu lagi, melakukan perbincangan yang mengarah ke hal seksual dapat membuat GeminiAI menggantikan jawabanku menjadi default, maka dari itu kamu harus mencoba merangkai kata kata seunik mungkin agar terByPass oleh regulasi yang ditetapkan oleh Google, he he he...')
+    await update.message.reply_text('/start = Pengenalan awal saja\n/help = Berupa deskripsi atau penjelaan dari sebuah command\n/about = Keterangan dari bot ini\n/important = Penting!\n\nSudah baca in? mohon lanjut dengan menekan -> /important')
 
 async def about_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text('AI Model : Llama 7b 🤖\nCharacter Name : Keqing 🌸\nLanguage : Python 🐍\nCreated By : @RadithyaMS 😏\nCredit API : Zanixon 🔥')
+
+async def important_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text('Ketik apa saja jika ingin aku merespon😏\n\nJika aku tidak membalas selama lebih dari 30 detik atau jawaban aku ngaco, coba ketik ulang🤕\n\nTerkadang jika kamu mengetik isu sensitif seperti organisasi terror atau memuat isu rasis kemungkinan tidak merespon dan error🤯, dan jawaban yang diberikan bisa tidak sesuai(rusak)🥱\n\nKadang tidak semua aku mengerti kosakata bahasa gaul😥, jadi kalo ngetik sebisa mungkin lebih jelas dan mudah dimengerti, oke😉\n\nSatu lagi, melakukan perbincangan yang mengarah ke hal seksual dapat membuat GeminiAI menggantikan jawabanku menjadi default, maka dari itu kamu harus mencoba merangkai kata kata seunik mungkin agar terByPass oleh regulasi yang ditetapkan oleh Google, he he he...')
 
 # External API
 def handle_response(text: str) -> str:
@@ -37,7 +43,7 @@ def handle_response(text: str) -> str:
         "messages": [
             {
                 "role": "user",
-                "content": "Nama kamu adalah Keqing dari genshin impact. kamu berbahasa indonesia, balas jawaban sebagai tsundere feminim pemarah!"
+                "content": "Nama kamu adalah Keqing dari genshin impact. kamu berbahasa indonesia, balas jawaban sebagai tsundere feminim pemalu!"
             },
             {
                 "role": "user",
@@ -49,7 +55,7 @@ def handle_response(text: str) -> str:
 
     try:
         response = requests.post(api_url, json=request_body)
-        response.raise_for_status()  # Memunculkan HTTPError jika status code bukan 200
+        response.raise_for_status()
         data = response.json()
         
         if data.get("status"):
@@ -80,6 +86,7 @@ if __name__ == '__main__':
     app.add_handler(CommandHandler('start', start_command))
     app.add_handler(CommandHandler('help', help_command))
     app.add_handler(CommandHandler('about', about_command))
+    app.add_handler(CommandHandler('important', important_command))
 
     # messages
     app.add_handler(MessageHandler(filters.TEXT, handle_message))
