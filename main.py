@@ -41,9 +41,9 @@ async def deredere_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # External API
 def handle_response(text: str, state: str) -> str:
     if state == 'tsundere':
-        api_url = f"https://api.nyx.my.id/ai/character-ai2?prompt={text}&gaya=balas%20sebagai%20pacar%20tsundere%20pemarah"
+        api_url = f"https://api.nyx.my.id/ai/character-ai?prompt={text}&gaya=balas%20sebagai%20pacar%20tsundere%20pemarah"
     else:
-        api_url = f"https://api.nyx.my.id/ai/character-ai2?prompt={text}&gaya=balas%20sebagai%20pacar%20deredere%20cabul"
+        api_url = f"https://api.nyx.my.id/ai/character-ai?prompt={text}&gaya=balas%20sebagai%20pacar%20deredere%20cabul"
 
     try:
         response = requests.get(api_url)
