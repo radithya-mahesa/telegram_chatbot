@@ -11,9 +11,10 @@ port = int(os.getenv('PORT', 8080))
 # Token dan username disimpan ke dalam environment variable cloud server
 TOKEN: final = os.getenv('TOKEN')
 BOT_USERNAME: final = os.getenv('USERNAME')
+WEBHOOK_URL: final = os.getenv('WEBHOOK_URL')  # URL dari server kamu
 
-if TOKEN is None or BOT_USERNAME is None:
-    raise ValueError("Token atau username bot tidak ditemukan :(")
+if TOKEN is None or BOT_USERNAME is None or WEBHOOK_URL is None:
+    raise ValueError("Token, username bot atau URL webhook tidak ditemukan :(")
 
 # /commands
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -82,7 +83,8 @@ if __name__ == '__main__':
     # errors
     app.add_error_handler(error)
 
-    # polls the bot
-    print('polling...')
-    app.run_polling(poll_interval=3)
-  
+    # webhook
+    app.run_webhook(listen="0.0.0.0",
+                    port=port,
+                    url_path=f"/{TOKEN}",
+                    webhook_url=f"{WEBHOOK_URL}/{TOKEN}")
