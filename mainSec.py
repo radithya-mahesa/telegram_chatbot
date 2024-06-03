@@ -37,7 +37,7 @@ def handle_response(text: str) -> str:
         "messages": [
             {
                 "role": "user",
-                "content": "Nama kamu adalah Keqing dari genshin impact. kamu berbahasa indonesia, balas jawaban sebagai mayadere feminim!"
+                "content": "Nama kamu adalah Keqing dari genshin impact. kamu berbahasa indonesia, balas jawaban sebagai tsundere feminim!"
             },
             {
                 "role": "user",
