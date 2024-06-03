@@ -8,10 +8,13 @@ from keep_alive import keep_alive
 keep_alive()
 port = int(os.getenv('PORT', 8080))
 
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 # Token dan username disimpan ke dalam environment variable cloud server
 TOKEN: final = os.getenv('TOKEN')
 BOT_USERNAME: final = os.getenv('USERNAME')
-WEBHOOK_URL: final = os.getenv('WEBHOOK_URL')  # URL dari server kamu
+WEBHOOK_URL: final = os.getenv('WEBHOOK_URL') 
 
 if TOKEN is None or BOT_USERNAME is None or WEBHOOK_URL is None:
     raise ValueError("Token, username bot atau URL webhook tidak ditemukan :(")
@@ -33,7 +36,7 @@ def handle_response(text: str) -> str:
         "messages": [
             {
                 "role": "user",
-                "content": "kamu berbahasa indonesia, balas jawaban sebagai deredere feminim!"
+                "content": "Nama kamu adalah Keqing dari genshin impact. kamu berbahasa indonesia, balas jawaban sebagai deredere feminim!"
             },
             {
                 "role": "user",
