@@ -28,7 +28,7 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text('Hola! selamat datang di Bot Telegramku✨\nkamu bisa ngobrol bebas selayaknya Character AI🥳\nMohon ketik atau tekan "/help" dan /important terlebih dahulu sebelum mulai! ⚠')
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text('/start = Pengenalan awal saja\n/help = Berupa deskripsi atau penjelaan dari sebuah command\n/about = Keterangan dari bot ini\n/important = Penting!\n\nSudah baca in? mohon lanjut dengan menekan -> /important')
+    await update.message.reply_text('/start = Pengenalan awal saja\n/help = Berupa deskripsi atau penjelaan dari sebuah command\n/about = Keterangan dari bot ini\n/important = Penting!\n\nSudah baca ini? mohon lanjut dengan menekan -> /important')
 
 async def about_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text('AI Model : Llama 7b 🤖\nCharacter Name : Keqing 🌸\nLanguage : Python 🐍\nCreated By : @RadithyaMS 😏\nCredit API : Zanixon 🔥')
