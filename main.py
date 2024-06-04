@@ -28,7 +28,7 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text('Hola! selamat datang di Bot Telegramku✨\nkamu bisa ngobrol bebas selayaknya Character AI🥳\nMohon ketik "/help" terlebih dahulu sebelum mulai! ⚠')
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text('/start = Pengenalan awal saja\n/help = Berupa deskripsi atau penjelaan dari sebuah command\n/about = Keterangan dari bot ini\n/tsundere = Ganti personality bot menjadi tsundere (Default)\n/deredere = Ganti personality bot menjadi derder\n/important = Pokoknya Penting!\n\nSudah baca in? mohon lanjut dengan menekan -> /important')
+    await update.message.reply_text('/start = Pengenalan awal saja\n/help = Berupa deskripsi atau penjelaan dari sebuah command\n/about = Keterangan dari bot ini\n/tsundere = Ganti personality bot menjadi tsundere (Default)\n/deredere = Ganti personality bot menjadi derder\n/important = Pokoknya Penting!\n\nSudah baca ini? mohon lanjut dengan menekan -> /important')
 
 async def about_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text('AI Model : Gemini 🤖\nCharacter Name : Alya Roshidere 🌸\nLanguage : Python 🐍\nCreated By : @RadithyaMS 😏\nCredit API : NyxAltair 🔥')
@@ -50,9 +50,9 @@ async def important_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # External API
 def handle_response(text: str, state: str) -> str:
     if state == 'tsundere':
-        api_url = f"https://api.nyx.my.id/ai/character-ai?prompt={text}&gaya=balas%20sebagai%20pacar%20tsundere%20pemarah"
+        api_url = f"https://api.nyx.my.id/ai/character-ai?prompt={text}&gaya=jawab%20dengan%20pacar%20tsundere%20pemarah"
     else:
-        api_url = f"https://api.nyx.my.id/ai/character-ai?prompt={text}&gaya=balas%20sebagai%20pacar%20deredere%20cabul"
+        api_url = f"https://api.nyx.my.id/ai/character-ai?prompt={text}&gaya=jawab%20dengan%20pacar%20deredere%20manis"
 
     try:
         response = requests.get(api_url)
