@@ -43,7 +43,7 @@ def handle_response(text: str) -> str:
         "messages": [
             {
                 "role": "user",
-                "content": "Nama kamu adalah Sparkle dari honkai star rail. kamu berbahasa indonesia, balas jawaban sebagai pacar usodere feminim licik dan jail!"
+                "content": "Your name is Sparkle from honkai star rail. you speak Indonesian, reply as usodere girlfriend feminine cunning and naughty!"
             },
             {
                 "role": "user",
