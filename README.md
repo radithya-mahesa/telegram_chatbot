@@ -12,7 +12,7 @@ use requirements.txt but, you must write the code here (look in my repository).<
 
 - Also don't forget to install Python on your computer previously if u don't have Python
 
-- Run in main.py
+- Run in main.py or mainSec.py
   
 - Create your Telegram Bot in BotFather (can see the tutorial on youtube)
 
