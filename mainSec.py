@@ -50,7 +50,7 @@ def handle_response(text: str) -> str:
                 "content": text
             }
         ],
-        "model": "7b"
+        "model": "70b"
     }
 
     try:
