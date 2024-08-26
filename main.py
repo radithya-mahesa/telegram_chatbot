@@ -31,7 +31,7 @@ async def about_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def important_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text('Ketik apa saja jika ingin aku merespon😏\n\nJika aku tidak membalas selama lebih dari 30 detik atau jawaban aku ngaco, coba ketik ulang🤕\n\nTerkadang jika kamu mengetik isu sensitif seperti organisasi terror atau memuat isu rasis kemungkinan tidak merespon dan error🤯, dan jawaban yang diberikan bisa tidak sesuai(rusak)🥱\n\nKadang tidak semua aku mengerti kosakata bahasa gaul😥, jadi kalo ngetik sebisa mungkin lebih jelas dan mudah dimengerti, oke😉\n\nSatu lagi, melakukan perbincangan yang mengarah ke hal seksual dapat membuat Llama3 menggantikan jawabanku menjadi default, maka dari itu kamu harus mencoba merangkai kata kata seunik mungkin agar terByPass oleh regulasi yang ditetapkan oleh Google, he he he...')
 
-# External API
+# external API
 def handle_response(text: str) -> str:
     api_url = 'https://llama3-enggan-ngoding.vercel.app/api/llama'
     request_body = {
@@ -89,11 +89,7 @@ if __name__ == '__main__':
     # errors
     app.add_error_handler(error)
 
-    # webhook
-    # app.run_webhook(listen="0.0.0.0",
-    #                 port=port,
-    #                 url_path=f"/{TOKEN}",
-    #                 webhook_url=f"{WEBHOOK_URL}/{TOKEN}")
+    # polls
     print('polling...')
     app.run_polling(poll_interval=3)
 
