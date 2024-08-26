@@ -7,17 +7,15 @@ import requests
 from keep_alive import keep_alive
 
 keep_alive()
-port = int(os.getenv('PORT', 8080))
+port = int(os.getenv('PORT', 9000))
 
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
-logger = logging.getLogger(__name__)
+# logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
+# logger = logging.getLogger(__name__)
 
-# Token dan username disimpan ke dalam environment variable cloud server
 TOKEN: final = os.getenv('TOKEN')
 BOT_USERNAME: final = os.getenv('USERNAME')
-WEBHOOK_URL: final = os.getenv('WEBHOOK_URL') 
 
-if TOKEN is None or BOT_USERNAME is None or WEBHOOK_URL is None:
+if TOKEN is None or BOT_USERNAME is None:
     raise ValueError("Token, username bot atau URL webhook tidak ditemukan :(")
 
 # /commands
@@ -92,7 +90,11 @@ if __name__ == '__main__':
     app.add_error_handler(error)
 
     # webhook
-    app.run_webhook(listen="0.0.0.0",
-                    port=port,
-                    url_path=f"/{TOKEN}",
-                    webhook_url=f"{WEBHOOK_URL}/{TOKEN}")
+    # app.run_webhook(listen="0.0.0.0",
+    #                 port=port,
+    #                 url_path=f"/{TOKEN}",
+    #                 webhook_url=f"{WEBHOOK_URL}/{TOKEN}")
+    print('polling...')
+    app.run_polling(poll_interval=3)
+
+    
