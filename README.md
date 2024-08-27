@@ -22,4 +22,4 @@ Provides a list of the Docker containers :<br>
   
 - Create your Telegram Bot in BotFather (can see the tutorial on youtube)
 
-API Credit : Zanixon
+API Credit : Zanixon/ZTRdiamond or whoever :v
