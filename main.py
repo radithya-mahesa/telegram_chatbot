@@ -5,9 +5,11 @@ from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 import requests
 from keep_alive import keep_alive
+from dotenv import load_dotenv
+load_dotenv()
 
 keep_alive()
-port = int(os.getenv('PORT', 9000))
+port = int(os.getenv('PORT', 9001))
 
 # logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 # logger = logging.getLogger(__name__)
@@ -16,7 +18,7 @@ TOKEN: final = os.getenv('TOKEN')
 BOT_USERNAME: final = os.getenv('USERNAME')
 
 if TOKEN is None or BOT_USERNAME is None:
-    raise ValueError("Token, username bot atau URL webhook tidak ditemukan :(")
+    raise ValueError("Token & Username tidak ditemukan :(")
 
 # /commands
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
