@@ -1,24 +1,25 @@
 import os
 import logging
-from typing import final
+from typing import Final
 from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 import requests
 from keep_alive import keep_alive
 from dotenv import load_dotenv
-load_dotenv()
 
-keep_alive()
-port = int(os.getenv('PORT', 9001))
+load_dotenv()
 
 # logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 # logger = logging.getLogger(__name__)
 
-TOKEN: final = os.getenv('TOKEN')
-BOT_USERNAME: final = os.getenv('USERNAME')
+TOKEN: Final[str] = os.getenv('TOKEN')
+BOT_USERNAME: Final[str] = os.getenv('USERNAME')
+PORT: Final[int] = int(os.getenv('PORT', 9001))
 
 if TOKEN is None or BOT_USERNAME is None:
     raise ValueError("Token & Username tidak ditemukan :(")
+
+keep_alive()
 
 # /commands
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
