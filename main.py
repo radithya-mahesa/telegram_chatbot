@@ -13,7 +13,7 @@ load_dotenv()
 # logger = logging.getLogger(__name__)
 
 TOKEN: Final[str] = os.getenv('TOKEN')
-BOT_USERNAME: Final[str] = os.getenv('USERNAME')
+BOT_USERNAME: Final[str] = os.getenv('BOT_USERNAME')
 PORT: Final[int] = int(os.getenv('PORT', 9001))
 
 if TOKEN is None or BOT_USERNAME is None:
