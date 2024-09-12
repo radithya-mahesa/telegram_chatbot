@@ -1,0 +1,7 @@
+name: bot-tele-radit
+services:
+  api:
+    container_name: raditbot1
+    image: chatbot:v1.1
+    ports:
+      - 9003:9000
