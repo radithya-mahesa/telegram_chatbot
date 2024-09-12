@@ -1,7 +1,7 @@
 name: bot-tele-radit
 services:
   api:
-    container_name: raditbot1
+    container_name: ligma
     image: chatbot:v1.1
     ports:
-      - 9003:9000
+      - 9000:9000
