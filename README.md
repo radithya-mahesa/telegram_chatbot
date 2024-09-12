@@ -17,6 +17,11 @@ Provides a list of the Docker containers :<br>
 
 
 - Also don't forget to install Python on your computer previously if u don't have Python
+  
+- make sure you create .env file inside your directory, Here's an example of the contents of .env<br>
+<code>TOKEN=6800704828:CROTF8dKJ-YoUr-TeLeGrAm_ToKeN_HeRe<br>
+BOT_USERNAME=@example_bot<br>
+PORT=9000<br></code>
 
 - Run in main.py
   
